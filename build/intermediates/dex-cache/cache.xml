@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/exploded-aar/wikitudesdk/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="943826ba38df25fea857508300b31bd1f20c9301">
+        <dex dex="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-wikitudesdk_72b5ea0beae5b008695352211e8f8f913de77c0c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="fcc945a86ebcbf527429acb8216ec7dae2c06417">
+        <dex dex="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.0_18da459051d9d71ab5b783860224fdca6a170bc9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="45f5eda279825ff470e3f51019d374d1ef61e000">
+        <dex dex="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.2.0_5dd8035b907afff29ae2048dbfd422d972682501/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="c84e216d9bf618464d6b9564d71d9a656433e7c4">
+        <dex dex="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-24.2.0_84cf94a1bbc3986f93f52e4511c9b169cf809ebf/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="f9b41622897665678d31d78e57a361cb0cebcb0d">
+        <dex dex="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.0_3ae3775cc5af9d5d97949695e0b631df070d76a8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="60d7b23621d31e6f42f4f76f16af467e57a20cda">
+        <dex dex="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.0_50823ff286235413ca5bfdeeeb2407f04ec267c6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/SSD2/android-sdk-mac_x86/extras/android/m2repository/com/android/support/support-annotations/24.2.0/support-annotations-24.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="6be858a75633b1f0a2d24cad740db57775cb6871">
+        <dex dex="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.0_93557b7be7fb518909d2a0cb23cbf6430095e6e7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="eefee87d725286a6bf741d3bb04cc60dc806ca5f">
+        <dex dex="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_9fb051552a75ebaf052f9f8ae341476b231ec490/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="6e02e34594ebe9c0501ffda8dd48497f81b82977">
+        <dex dex="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.0_e03b5dabfafa47230d711d98755a091f6a606c3f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="032a4b53def5e2ceedfc2e793b126c0163cfa1dd">
+        <dex dex="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.0_224437560fb945af18eb7b6e5948d94d8289fb34/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="045be695d968dd707691cc55d23746dbf8cf569a">
+        <dex dex="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.0_b2982b1b8cbf319640318403d1754896b293445e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="c3481ba4f92846c0841a68ac3b72ade70a5bbb9a">
+        <dex dex="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_f1b6ad033e94ba84489dd2c155f4164427b05086/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="6eb9107eb34d2fe2b020662b7fbbec991dcba846">
+        <dex dex="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.0_1ee8a1932cfa53b8445b3cfbb46de13fee7bd6f9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/farhad/.gradle/caches/modules-2/files-2.1/com.google.zxing/core/3.2.0/e019d15a13a9786f881141d2df6654b8510bce8b/core-3.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="e019d15a13a9786f881141d2df6654b8510bce8b">
+        <dex dex="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/transforms/dex/debug/folders/1000/10/core-3.2.0_3b7e949073773e1513fdc3dac85aa578a51be453/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.0/jars/libs/internal_impl-24.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="771b3cc0e597b54da25f8086ba73180c59c6bc71">
+        <dex dex="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.0_c10f221b4d1352a7cde2131c7f4cfa59c02f1c27/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.1"
+        sha1="d8bd2268fdcbfd52c76ade65d9900cd8def93a44">
+        <dex dex="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.0_110f97832e4caa8a380caf597b46db194d834aa1/classes.dex" />
+    </item>
+
+</items>

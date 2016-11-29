@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="arm64-v8a,armeabi-v7a,armeabi"
+    api-level="23"
+    density="xhdpi"
+    format="8"
+    plugin-version="2.2.2"
+    timestamp="4368412855693"
+    token="-5017571502032343662"
+    verifier="FULL_BUILD_REQUESTED" >
+
+    <task
+        name="javac"
+        duration="630" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="374" />
+    <task
+        name="verifier"
+        duration="32" />
+
+    <artifact
+        location="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/outputs/apk/wikitude-sdk-samples-debug.apk"
+        type="MAIN" />
+
+    <build
+        timestamp="4368412855693"
+        verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="/Volumes/SSD2/Developments/wikitude-sdk-samples/build/outputs/apk/wikitude-sdk-samples-debug.apk"
+            type="MAIN" />
+    </build>
+
+</instant-run>

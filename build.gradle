@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
+
+    defaultConfig {
+        applicationId "com.wiret.arbrowser"
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionName "5.3.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            debuggable true
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile (name: 'wikitudesdk', ext:'aar')
+    compile 'com.android.support:support-v4:24.2.0'
+    compile 'com.google.zxing:core:3.2.0'
+}
+
+repositories {
+    flatDir{
+        dirs 'libs'
+    }
+}
+
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.2'
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}

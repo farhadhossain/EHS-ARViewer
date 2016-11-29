@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/res/merged/debug/layout/sample_cam_fragment_main.xml",
+        "source": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/layout/sample_cam_fragment_main.xml"
+    },
+    {
+        "merged": "/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/res/merged/debug/layout/list_sample.xml",
+        "source": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/layout/list_sample.xml"
+    },
+    {
+        "merged": "/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/res/merged/debug/layout/sample_cam.xml",
+        "source": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/layout/sample_cam.xml"
+    },
+    {
+        "merged": "/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/res/merged/debug/layout/sample_1.xml",
+        "source": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/layout/sample_1.xml"
+    },
+    {
+        "merged": "/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/res/merged/debug/layout/row.xml",
+        "source": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/layout/row.xml"
+    },
+    {
+        "merged": "/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/res/merged/debug/layout/list_startscreen.xml",
+        "source": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/layout/list_startscreen.xml"
+    },
+    {
+        "merged": "/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/res/merged/debug/layout/urllauncher_main.xml",
+        "source": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/layout/urllauncher_main.xml"
+    },
+    {
+        "merged": "/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/res/merged/debug/layout/place_list.xml",
+        "source": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/layout/place_list.xml"
+    },
+    {
+        "merged": "/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/res/merged/debug/layout/sample_poidetail.xml",
+        "source": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/layout/sample_poidetail.xml"
+    }
+]

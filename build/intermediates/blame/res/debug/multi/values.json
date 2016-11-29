@@ -1,0 +1,395 @@
+[
+    {
+        "outputFile": "/Volumes/SSD2/Developments/wikitude-sdk-samples/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 54,
+                    "endOffset": 105
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 54,
+                        "endOffset": 105
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 110,
+                    "endColumn": 120,
+                    "endOffset": 226
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 182,
+                        "endColumn": 120,
+                        "endOffset": 298
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 231,
+                    "endColumn": 75,
+                    "endOffset": 302
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 382,
+                        "endColumn": 75,
+                        "endOffset": 453
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 307,
+                    "endColumn": 45,
+                    "endOffset": 348
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 1114,
+                        "endColumn": 45,
+                        "endOffset": 1155
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 353,
+                    "endColumn": 78,
+                    "endOffset": 427
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 303,
+                        "endColumn": 78,
+                        "endOffset": 377
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 432,
+                    "endColumn": 71,
+                    "endOffset": 499
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 110,
+                        "endColumn": 71,
+                        "endOffset": 177
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 504,
+                    "endColumn": 55,
+                    "endOffset": 555
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 936,
+                        "endColumn": 55,
+                        "endOffset": 987
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 560,
+                    "endColumn": 58,
+                    "endOffset": 614
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 700,
+                        "endColumn": 58,
+                        "endOffset": 754
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 619,
+                    "endColumn": 37,
+                    "endOffset": 652
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 992,
+                        "endColumn": 37,
+                        "endOffset": 1025
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 657,
+                    "endColumn": 41,
+                    "endOffset": 694
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 894,
+                        "endColumn": 41,
+                        "endOffset": 931
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 699,
+                    "endColumn": 83,
+                    "endOffset": 778
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1030,
+                        "endColumn": 83,
+                        "endOffset": 1109
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 783,
+                    "endColumn": 62,
+                    "endOffset": 841
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 637,
+                        "endColumn": 62,
+                        "endOffset": 695
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 846,
+                    "endColumn": 71,
+                    "endOffset": 913
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 822,
+                        "endColumn": 71,
+                        "endOffset": 889
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 918,
+                    "endColumn": 62,
+                    "endOffset": 976
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 759,
+                        "endColumn": 62,
+                        "endOffset": 817
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 981,
+                    "endColumn": 72,
+                    "endOffset": 1049
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 564,
+                        "endColumn": 72,
+                        "endOffset": 632
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 1054,
+                    "endColumn": 105,
+                    "endOffset": 1155
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 458,
+                        "endColumn": 105,
+                        "endOffset": 559
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1160,
+                    "endLine": 24,
+                    "endColumn": 12,
+                    "endOffset": 1446
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/styles.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 186,
+                        "endLine": 12,
+                        "endColumn": 12,
+                        "endOffset": 472
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 1451,
+                    "endLine": 29,
+                    "endColumn": 12,
+                    "endOffset": 1775
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/styles.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 510,
+                        "endLine": 19,
+                        "endColumn": 12,
+                        "endOffset": 834
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 30,
+                    "startColumn": 4,
+                    "startOffset": 1780,
+                    "endLine": 32,
+                    "endColumn": 10,
+                    "endOffset": 1957
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/styles.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 849,
+                        "endLine": 24,
+                        "endColumn": 10,
+                        "endOffset": 1026
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 33,
+                    "startColumn": 4,
+                    "startOffset": 1962,
+                    "endLine": 35,
+                    "endColumn": 9,
+                    "endOffset": 2129
+                },
+                "from": {
+                    "file": "/Volumes/SSD2/Developments/wikitude-sdk-samples/src/main/res/values/styles.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 1,
+                        "startOffset": 1028,
+                        "endLine": 27,
+                        "endColumn": 9,
+                        "endOffset": 1195
+                    }
+                }
+            }
+        ]
+    }
+]
