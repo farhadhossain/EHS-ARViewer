@@ -438,7 +438,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 						// TODO: you may replace this dummy implementation and instead load POI information e.g. from your database
 						poiData = getPoiInformation(lastKnownLocaton, kmlPath);
 						callJavaScript("World.loadPoisFromJsonData", new String[] { poiData.toString() });
-						runOnUiThread(new Runnable() {
+						AbstractArchitectCamActivity.this.runOnUiThread(new Runnable() {
 
 							@Override
 							public void run() {
@@ -492,7 +492,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 			InputStream is = cr.openInputStream(Uri.fromFile(new File(kmlPath)));
 			places = new KmlParser().parse(is);
 		}catch(final Exception e){
-			runOnUiThread(new Runnable() {
+			AbstractArchitectCamActivity.this.runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
 					Toast.makeText(AbstractArchitectCamActivity.this, "Invalid kml file \n"+ e.getMessage(), Toast.LENGTH_LONG).show();
@@ -593,7 +593,6 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 							filename = returnCursor.getString(nameIndex);
 							String size = Long.toString(returnCursor.getLong(sizeIndex));
 						}
-						File fileSave = getExternalFilesDir(null);
 						String sourcePath = getExternalFilesDir(null).toString();
 						try {
 							File outputPath = new File(sourcePath + "/" + filename);
@@ -615,18 +614,20 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 			try {
 				injectData(path);
 			} catch (final Exception e) {
-				runOnUiThread(new Runnable() {
+				AbstractArchitectCamActivity.this.runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
 						Toast.makeText(AbstractArchitectCamActivity.this, "Invalid kml file.\n"+e.getMessage(), Toast.LENGTH_LONG).show();
 					}
 				});
+				Log.e(this.getClass().getName(), "Exception in importData", e);
 				e.printStackTrace();
 			}
 
 
 	}
 
+	@SuppressLint("NewApi")
 	private String getPath(Context context, Uri uri) {
 		final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
 
@@ -726,7 +727,6 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 	private boolean isGooglePhotosUri(Uri uri) {
 		return "com.google.android.apps.photos.content".equals(uri.getAuthority());
 	}
-
 
 	private void copyFileStream(File dest, Uri uri, Context context)
 			throws Exception {
