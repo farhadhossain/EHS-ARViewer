@@ -36,26 +36,15 @@ public class KmlParser {
 
         ArrayList entries = new ArrayList();
 
-        while (parser.next() != XmlPullParser.END_TAG) {
-            if (parser.getEventType() != XmlPullParser.START_TAG) {
-                continue;
-            }
-            if(parser.getName().equals("Document")){
+        int eventType = parser.getEventType();
 
-                while (parser.next() != XmlPullParser.END_TAG) {
-                    if (parser.getEventType() != XmlPullParser.START_TAG) {
-                        continue;
-                    }
-                    String name = parser.getName();
-                    // Starts by looking for the entry tag
-                    if (name.equals("Placemark")) {
-                        entries.add(readPlace(parser));
-                    } else {
-                        skip(parser);
-                    }
-                }
+        while (eventType != XmlPullParser.END_DOCUMENT) {
+            if (eventType == XmlPullParser.START_TAG && parser.getName().equals("Placemark")) {
+                entries.add(readPlace(parser));
             }
+            eventType = parser.next();
         }
+
 
         return entries;
     }
@@ -63,40 +52,46 @@ public class KmlParser {
     private Place readPlace(XmlPullParser parser) throws XmlPullParserException, IOException {
         parser.require(XmlPullParser.START_TAG, ns, "Placemark");
         Place place = new Place();
-        while (parser.next() != XmlPullParser.END_TAG) {
-            if (parser.getEventType() != XmlPullParser.START_TAG) {
+
+        int eventType = parser.next();
+
+        while (eventType != XmlPullParser.END_TAG) {
+
+            if (eventType != XmlPullParser.START_TAG) {
+                eventType = parser.next();
                 continue;
             }
+
             String name = parser.getName();
             if (name.equals("name")) {
                 place.name = readName(parser);
             } else if (name.equals("Point")) {
-                while (parser.next() != XmlPullParser.END_TAG) {
+                parser.next();
+                while (parser.getEventType() != XmlPullParser.END_TAG) {
                     if (parser.getEventType() != XmlPullParser.START_TAG) {
+                        parser.next();
                         continue;
                     }
                     if (parser.getName().equals("coordinates")) {
                         String coordinates = readText(parser);
                         place.lat = coordinates.split(",")[1].trim();
                         place.lon = coordinates.split(",")[0].trim();
+                    }else{
+                        skip(parser);
                     }
+                    parser.next();
                 }
             } else if (name.equals("description")) {
                 place.description = readText(parser);
-            } else {
+            }else{
                 skip(parser);
             }
+
+            eventType = parser.next();
         }
 
        return place;
 
-    }
-
-    private String readName(XmlPullParser parser) throws IOException, XmlPullParserException {
-        parser.require(XmlPullParser.START_TAG, ns, "name");
-        String title = readText(parser);
-        parser.require(XmlPullParser.END_TAG, ns, "name");
-        return title;
     }
 
     private void skip(XmlPullParser parser) throws XmlPullParserException, IOException {
@@ -114,6 +109,13 @@ public class KmlParser {
                     break;
             }
         }
+    }
+
+    private String readName(XmlPullParser parser) throws IOException, XmlPullParserException {
+        parser.require(XmlPullParser.START_TAG, ns, "name");
+        String title = readText(parser);
+        parser.require(XmlPullParser.END_TAG, ns, "name");
+        return title;
     }
 
     private String readText(XmlPullParser parser) throws IOException, XmlPullParserException {

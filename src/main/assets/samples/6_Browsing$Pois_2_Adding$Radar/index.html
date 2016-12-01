@@ -40,7 +40,16 @@
         .ui-panel-inner {
           padding: 0 !important;
         }
-
+        #poi-detail-description{
+          display:inline-block;
+          width:100%;
+          overflow:scroll;
+        }
+        #poi-detail-description table{
+            table-layout: fixed;
+            max-width:100%;
+            white-space:nowrap;
+        }
     </style>
 </head>
     
@@ -59,7 +68,6 @@
              <div data-role="navbar"  style="float:right;" data-corners="false">
                  <ul>
                  <li><a href="#" id="open_new_btn" data-icon="plus" data-corners="false">Open New</a></li>
-                 <li><a href="#" id="refresh_btn"  data-icon="refresh" data-corners="false">Reload</a></li>
                  </ul>
              </div>
 
@@ -132,10 +140,6 @@
                 $('#open_new_btn').click(function(){
                    $(".ui-btn-active").removeClass('ui-btn-active');
                    document.location="architectsdk://openNew?id=1";
-                });
-
-                $('#refresh_btn').click(function(){
-                   $(".ui-btn-active").removeClass('ui-btn-active');
                 });
 
                 $('#more_btn').click(function(){

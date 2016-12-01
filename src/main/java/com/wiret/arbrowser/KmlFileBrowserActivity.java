@@ -17,7 +17,7 @@ import java.io.InputStream;
 
 public class KmlFileBrowserActivity extends ArchitectCamActivity {
 
-	public static final int FILE_SELECT_CODE = 0;
+	public static final int FILE_SELECT_CODE = 101;
 
 
 

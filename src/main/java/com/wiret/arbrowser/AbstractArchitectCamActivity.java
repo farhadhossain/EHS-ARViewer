@@ -4,9 +4,12 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationListener;
 import android.media.AudioManager;
@@ -14,8 +17,13 @@ import android.net.Uri;
 import android.opengl.GLES20;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.DocumentsContract;
+import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.test.suitebuilder.annotation.Suppress;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
@@ -29,13 +37,18 @@ import com.wikitude.architect.StartupConfiguration;
 import com.wikitude.architect.StartupConfiguration.CameraPosition;
 import com.wikitude.samples.ArchitectViewHolderInterface;
 
+import org.apache.commons.io.FilenameUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -82,6 +95,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 
 	private Uri kmlFile;
 
+
 	/** Called when the activity is first created. */
 	@SuppressLint("NewApi")
 	@Override
@@ -110,11 +124,24 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 
 		kmlFile = getIntent().getData();
 
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ) {
+
+		if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ) {
 			ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.CAMERA, android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
 		} else {
-			this.setContentView( this.getContentViewId() );
-			initArView();
+			try{
+				this.setContentView( this.getContentViewId() );
+				initArView();
+			} catch (Exception rex) {
+				this.architectView = null;
+				AbstractArchitectCamActivity.this.runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(AbstractArchitectCamActivity.this, "AR not supported by this device.", Toast.LENGTH_LONG).show();
+					}
+				});
+				Log.e(this.getClass().getName(), "Exception in ArchitectView.onCreate()", rex);
+				finish();
+			}
 		}
 
 
@@ -126,11 +153,24 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 		switch (requestCode) {
 			case 101: {
 				if ( grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED ) {
-					this.setContentView( this.getContentViewId() );
-					initArView();
+					try{
+						this.setContentView( this.getContentViewId() );
+						initArView();
+					} catch (Exception rex) {
+						this.architectView = null;
+						AbstractArchitectCamActivity.this.runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								Toast.makeText(AbstractArchitectCamActivity.this, "AR not supported by this device.", Toast.LENGTH_LONG).show();
+							}
+						});
+
+						Log.e(this.getClass().getName(), "Exception in ArchitectView.onCreate()", rex);
+						finish();
+					}
 					postCreateArView();
 					if(kmlFile!=null){
-						importData(kmlFile);
+						importData(kmlFile.getPath());
 					}
 				}
 				return;
@@ -146,14 +186,9 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 		/* pass SDK key if you have one, this one is only valid for this package identifier and must not be used somewhere else */
 		final StartupConfiguration config = new StartupConfiguration( this.getWikitudeSDKLicenseKey(), this.getFeatures(), this.getCameraPosition() );
 
-		try {
-			/* first mandatory life-cycle notification */
-			this.architectView.onCreate( config );
-		} catch (RuntimeException rex) {
-			this.architectView = null;
-			Toast.makeText(getApplicationContext(), "can't create Architect View", Toast.LENGTH_SHORT).show();
-			Log.e(this.getClass().getName(), "Exception in ArchitectView.onCreate()", rex);
-		}
+		/* first mandatory life-cycle notification */
+		this.architectView.onCreate( config );
+
 
 		// set accuracy listener if implemented, you may e.g. show calibration prompt for compass using this listener
 		this.sensorAccuracyListener = this.getSensorAccuracyListener();
@@ -244,7 +279,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 		super.onPostCreate( savedInstanceState );
 		postCreateArView();
 		if(kmlFile!=null){
-			importData(kmlFile);
+			importData(kmlFile.getPath());
 		}
 	}
 
@@ -403,6 +438,14 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 						// TODO: you may replace this dummy implementation and instead load POI information e.g. from your database
 						poiData = getPoiInformation(lastKnownLocaton, kmlPath);
 						callJavaScript("World.loadPoisFromJsonData", new String[] { poiData.toString() });
+						runOnUiThread(new Runnable() {
+
+							@Override
+							public void run() {
+								Toast.makeText(AbstractArchitectCamActivity.this, poiData.length()+" places loaded.", Toast.LENGTH_LONG).show();
+							}
+						});
+
 					}
 					
 					isLoading = false;
@@ -446,19 +489,15 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 		ArrayList<KmlParser.Place> places = new ArrayList<>();
 		try {
 			ContentResolver cr = getApplicationContext().getContentResolver();
-			InputStream is = cr.openInputStream(Uri.parse(kmlPath));
+			InputStream is = cr.openInputStream(Uri.fromFile(new File(kmlPath)));
 			places = new KmlParser().parse(is);
-		}catch(FileNotFoundException e){
-			Toast.makeText(this, "Invalid kml file.",
-					Toast.LENGTH_SHORT).show();
-		} catch (XmlPullParserException e) {
-			e.printStackTrace();
-			Toast.makeText(this, "Invalid kml file.",
-					Toast.LENGTH_SHORT).show();
-		} catch (IOException e) {
-			e.printStackTrace();
-			Toast.makeText(this, "Invalid kml file.",
-					Toast.LENGTH_SHORT).show();
+		}catch(final Exception e){
+			runOnUiThread(new Runnable() {
+				@Override
+				public void run() {
+					Toast.makeText(AbstractArchitectCamActivity.this, "Invalid kml file \n"+ e.getMessage(), Toast.LENGTH_LONG).show();
+				}
+			});
 		}
 
 		final JSONArray pois = new JSONArray();
@@ -498,7 +537,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 		return new double[] { lat + Math.random()/5-0.1 , lon + Math.random()/5-0.1};
 	}
 
-	@Override
+	/*@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
 			case KmlFileBrowserActivity.FILE_SELECT_CODE:
@@ -508,7 +547,7 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 					if(kmlFile!=null) {
 						//getIntent().setData(null);
 						try {
-							if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ) {
+							if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ) {
 								ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.CAMERA, android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
 							} else {
 								importData(kmlFile);
@@ -522,22 +561,192 @@ public abstract class AbstractArchitectCamActivity extends Activity implements A
 				break;
 		}
 		super.onActivityResult(requestCode, resultCode, data);
-	}
+	}*/
 
-	private void importData(Uri data) {
-		final String scheme = data.getScheme();
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (requestCode == KmlFileBrowserActivity.FILE_SELECT_CODE) {
+			if (resultCode == RESULT_OK) {
+				try {
+					String filename = "";
+					Uri uri = data.getData();
 
-		if(ContentResolver.SCHEME_FILE.equals(scheme)) {
-			try {
-				ContentResolver cr = getApplicationContext().getContentResolver();
-				InputStream is = cr.openInputStream(data);
-				if(is == null) return;
-				is.close();
+					if (false) {
+						Toast.makeText(this,"The selected file is too large. Selet a new file with size less than 2mb",Toast.LENGTH_LONG).show();
+					} else {
+						String mimeType = getContentResolver().getType(uri);
+						if (mimeType == null) {
+							String path = getPath(this, uri);
+							if (path == null) {
+								filename = FilenameUtils.getName(uri.toString());
+							} else {
+								File file = new File(path);
+								filename = file.getName();
+							}
+						} else {
+							Uri returnUri = data.getData();
+							Cursor returnCursor = getContentResolver().query(returnUri, null, null, null, null);
+							int nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+							int sizeIndex = returnCursor.getColumnIndex(OpenableColumns.SIZE);
+							returnCursor.moveToFirst();
+							filename = returnCursor.getString(nameIndex);
+							String size = Long.toString(returnCursor.getLong(sizeIndex));
+						}
+						File fileSave = getExternalFilesDir(null);
+						String sourcePath = getExternalFilesDir(null).toString();
+						try {
+							File outputPath = new File(sourcePath + "/" + filename);
+							copyFileStream(outputPath, uri,this);
+							importData(outputPath.getAbsolutePath());
 
-				injectData(data.toString());
-			}catch(Exception e){
-				e.printStackTrace();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
+
+	private void importData(String  path) {
+			try {
+				injectData(path);
+			} catch (final Exception e) {
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						Toast.makeText(AbstractArchitectCamActivity.this, "Invalid kml file.\n"+e.getMessage(), Toast.LENGTH_LONG).show();
+					}
+				});
+				e.printStackTrace();
+			}
+
+
+	}
+
+	private String getPath(Context context, Uri uri) {
+		final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
+
+		// DocumentProvider
+		if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {
+			// ExternalStorageProvider
+			if (isExternalStorageDocument(uri)) {
+				final String docId = DocumentsContract.getDocumentId(uri);
+				final String[] split = docId.split(":");
+				final String type = split[0];
+
+				if ("primary".equalsIgnoreCase(type)) {
+					return Environment.getExternalStorageDirectory() + "/" + split[1];
+				}
+				// TODO handle non-primary volumes
+			}
+			// DownloadsProvider
+			else if (isDownloadsDocument(uri)) {
+				final String id = DocumentsContract.getDocumentId(uri);
+				final Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
+				return getDataColumn(context, contentUri, null, null);
+			}
+			// MediaProvider
+			else
+			if (isMediaDocument(uri)) {
+				final String docId = DocumentsContract.getDocumentId(uri);
+				final String[] split = docId.split(":");
+				final String type = split[0];
+				Uri contentUri = null;
+				if ("image".equals(type)) {
+					contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+				} else if ("video".equals(type)) {
+					contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+				} else if ("audio".equals(type)) {
+					contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+				}
+				final String selection = "_id=?";
+				final String[] selectionArgs = new String[] {split[1]};
+				return getDataColumn(context, contentUri, selection, selectionArgs);
+			}
+		}
+		// MediaStore (and general)
+		else if ("content".equalsIgnoreCase(uri.getScheme())) {
+			// Return the remote address
+			if (isGooglePhotosUri(uri))
+				return uri.getLastPathSegment();
+			return getDataColumn(context, uri, null, null);
+		}
+		// File
+		else if ("file".equalsIgnoreCase(uri.getScheme())) {
+			return uri.getPath();
+		}
+		return null;
+	}
+
+	private String getDataColumn(Context context, Uri uri, String selection, String[] selectionArgs) {
+		Cursor cursor = null;
+		final String column = "_data";
+		final String[] projection = { column };
+		try {
+			cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs, null);
+			if (cursor != null && cursor.moveToFirst()) {
+				final int index = cursor.getColumnIndexOrThrow(column);
+				return cursor.getString(index);
+			}
+		} finally {
+			if (cursor != null)
+				cursor.close();
+		}
+		return null;
+	}
+
+	private boolean isExternalStorageDocument(Uri uri) {
+		return "com.android.externalstorage.documents".equals(uri.getAuthority());
+	}
+
+	/**
+	 * @param uri The Uri to check.
+	 * @return Whether the Uri authority is DownloadsProvider.
+	 */
+	private boolean isDownloadsDocument(Uri uri) {
+		return "com.android.providers.downloads.documents".equals(uri.getAuthority());
+	}
+
+	/**
+	 * @param uri The Uri to check.
+	 * @return Whether the Uri authority is MediaProvider.
+	 */
+	private boolean isMediaDocument(Uri uri) {
+		return "com.android.providers.media.documents".equals(uri.getAuthority());
+	}
+
+	/**
+	 * @param uri The Uri to check.
+	 * @return Whether the Uri authority is Google Photos.
+	 */
+	private boolean isGooglePhotosUri(Uri uri) {
+		return "com.google.android.apps.photos.content".equals(uri.getAuthority());
+	}
+
+
+	private void copyFileStream(File dest, Uri uri, Context context)
+			throws Exception {
+		InputStream is = null;
+		OutputStream os = null;
+		try {
+			is = context.getContentResolver().openInputStream(uri);
+			os = new FileOutputStream(dest);
+			byte[] buffer = new byte[1024];
+			int length;
+
+			while ((length = is.read(buffer)) > 0) {
+				os.write(buffer, 0, length);
+
+			}
+		} finally {
+			is.close();
+			os.close();
+		}
+	}
+
+
 }

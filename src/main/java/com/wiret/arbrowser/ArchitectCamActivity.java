@@ -116,7 +116,7 @@ public class ArchitectCamActivity extends AbstractArchitectCamActivity {
 
 	@Override
 	protected boolean hasIR() {
-		return true;
+		return false;
 	}
 
 	@Override
